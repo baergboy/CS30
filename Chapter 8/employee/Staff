@@ -1,0 +1,17 @@
+package employee;
+
+public abstract class Staff extends UEmployee {
+	
+	
+public Staff(String fn, String ln, double sal) {
+		super(fn, ln, sal);
+
+	}
+
+
+	public static void main(String[] args) {
+
+
+	}
+
+}
