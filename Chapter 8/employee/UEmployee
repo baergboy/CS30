@@ -1,0 +1,30 @@
+package employee;
+
+public abstract class UEmployee {
+
+private String f, l;
+
+private double s;
+
+public UEmployee(String fn, String ln, double sal) 
+{
+	f = fn;
+	l = ln;
+	s = sal; 
+}
+
+public double pay(double weeks)
+{
+	double payEarned;
+	payEarned = s/52*weeks;
+	return payEarned;
+}
+
+public String toString() 
+{
+	return("Name of Employee: " + f + " " + l + " and salary of employee is: "+ s);
+}
+	
+	abstract double pay1(double period);
+	
+}
