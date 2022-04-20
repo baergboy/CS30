@@ -1,0 +1,31 @@
+package employee;
+
+public abstract class Faculty extends UEmployee{
+	
+	private double Salary;
+	private String depar;
+	public Faculty(String fn, String ln, double sal, String l) 
+	{
+	
+	super(fn, ln, sal);
+	depar = l;
+	
+	}
+
+
+	public String depart()
+	{
+		
+		return depar;
+		
+	}
+	public String toString()
+	{
+	return(super.toString()+ ", Faculty" + "Department: " + depar + "Salary: " + Salary);
+	}
+
+
+
+	
+
+}
