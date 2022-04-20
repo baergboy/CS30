@@ -1,0 +1,142 @@
+/*
+Program: myDealership.java          Last Date of this Revision: April 7, 2022
+Purpose: A client code to run the code from car, minivan, truck, and Vehicle
+Author: Eli Baerg
+School: CHHS
+Course: Computer Programming 30
+ 
+*/
+
+package dealership;
+import java.util.Scanner;
+
+public class myDealership {
+
+	public static void main(String[] args) {
+		
+		
+		int ans; //Creates an int called ans
+		
+		/*
+		 Creates a Scanner to ask what vehicle they would like to check
+		 */
+		Scanner input = new Scanner(System.in);
+		System.out.println("What would you like to check? 1 for car, 2 for minivan, 3 for truck: ");
+		ans = input.nextInt();
+		
+		
+		
+		//if statement for when certain criteria is reached it will run the if statement
+		if (ans == 1) {
+			
+			car zoom = new car (23, 21, 5, 15.1); //Creates an object with the fuel effiency for highway and city roads, seating, and cargo space
+			
+			System.out.println(zoom.toString()); //Prints a toString for the car
+		}
+		
+		
+		//if statement for when certain criteria is reached it will run the if statement
+		if (ans == 2) {
+			
+			minivan zroom = new minivan (19, 16, 5, 30.7); //Creates an object with the fuel effiency for highway and city roads, seating, and cargo space
+			
+			System.out.println(zroom.toString()); //Prints a toString for the minivan
+		}
+		
+		
+		//if statement for when certain criteria is reached it will run the if statement
+		if (ans == 3) {
+			truck broom = new truck ( 18, 14, 5, 33.3); //Creates an object with the fuel effiency for highway and city roads, seating, and cargo space
+			
+			System.out.println(broom.toString()); //Prints a toString for the truck
+		}
+
+
+		
+		}
+	
+
+}
+
+Vehicle:
+
+package dealership;
+
+/**
+ * Vehicle class.
+ */
+abstract class Vehicle {
+	private int fuelEconomyCity, fuelEconomyHwy;
+	private int seatingCapacity;
+	private double cargoVolume;
+
+	/**
+	 * constructor
+	 * pre: none
+	 * post: A vehicle has been created.
+	 */
+	public Vehicle(int fECity, int fEHwy, int seating, double cargo) {
+		fuelEconomyCity = fECity;
+		fuelEconomyHwy = fEHwy;
+		seatingCapacity = seating;
+		cargoVolume = cargo;
+	}
+	
+		
+	/**
+	 * Returns the fEHwy
+	 * pre: none
+	 * post: The highway fuel economy has been returned
+	 */
+	 public int getFEHwy() {
+	 	return(fuelEconomyHwy);
+	 }
+
+
+	/**
+	 * Returns the fECity
+	 * pre: none
+	 * post: The city fuel economy has been returned
+	 */
+	 public int getFECity() {
+	 	return(fuelEconomyCity);
+	 }
+
+
+	/**
+	 * Returns the seating capacity
+	 * pre: none
+	 * post: The seating capacity has been returned
+	 */
+	 public int getSeating() {
+	 	return(seatingCapacity);
+	 }
+
+
+	/**
+	 * Returns the cargo volume
+	 * pre: none
+	 * post: The cargo volume has been returned
+	 */
+	 public double getCargoVolume() {
+	 	return(cargoVolume);
+	 }
+
+
+	/**
+	 * Should return the appropriate name of the cargo area
+	 * and the capacity.
+	 * pre: none
+	 * post: The name of the cargo container and its capacity 
+	 * has been returned
+	 */
+	abstract String cargoContainer();
+	
+	
+	/**
+	 * Should return a description of the car's typical use
+	 * pre: none
+	 * post: A description of the car's typical use has been returned.
+	 */
+	abstract String description();
+}
