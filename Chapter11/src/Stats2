@@ -1,3 +1,11 @@
+/*
+Program: Stats1.java          Last Date of this Revision: April 29, 2022
+Purpose: Asks user to input names and grades of students and outputs the highest lowest and average scores
+Author: Eli Baerg
+School: CHHS
+Course: Computer Science 30
+*/
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
