@@ -1,0 +1,81 @@
+/*
+Program: Stats1.java          Last Date of this Revision: April 28, 2022
+Purpose: Application which finds the highest, lowest, and average score in a file
+Author: Eli Baerg
+School: CHHS
+Course: Computer Science 30
+*/
+
+import java.util.*;
+import java.io.*;
+import java.text.NumberFormat;
+
+
+public class Stats1 {
+	
+	public static void main(String[] args) {
+		File answers;
+		FileReader in;
+		BufferedReader readFile;
+		String score;
+		double avgScore;
+		String line;
+		double totalScores = 0;
+		int numScores = 0;
+		double lowest = 100;//Initialize losest possible score
+		double highest = 0;//Initialize highest possible score
+		double currentScore = 0;//Variable to compare against lowest and highest scores
+		
+		//Create arrays that will each contain either all student names or all student grades
+		ArrayList<String> stuNames = new ArrayList<String>();
+		ArrayList<String> stuGrades = new ArrayList<String>();
+		
+		//Create variable that contains file
+		answers = new File("../Chapter 11/src/test1.txt");
+		
+		try {
+			in = new FileReader(answers);
+			readFile = new BufferedReader(in);
+			
+			//While loop goes through each line of the file, alternating between adding the line to the names array or the grades array
+			while((line = readFile.readLine()) != null) {
+				
+				stuNames.add(line);
+				System.out.println(line);
+				
+				
+				line = readFile.readLine();
+				System.out.println(line);
+				stuGrades.add(line);
+				
+				currentScore = Double.parseDouble(line);//Gives the current score the grade on the line to find if it is the highest or lowest
+				totalScores += Double.parseDouble(line);//Adds the current line to the total score
+				
+				numScores += 1;
+				
+				//Compares the current score to the highest and lowest grades to check if they need to change
+				if(currentScore > highest) {
+					highest = currentScore;
+				}
+				if(currentScore < lowest) {
+					lowest = currentScore;
+				}
+			}
+			avgScore = totalScores / numScores;
+			System.out.println("Lowest grade = " + lowest);
+			System.out.println("highest grade = " + highest);
+			System.out.println("Average = " + avgScore);
+			
+			readFile.close();
+			in.close();
+		}catch (FileNotFoundException e) {
+			System.out.println("File does not exist or could not be found.");
+			System.err.println("FileNotFoundException: " + e.getMessage());
+		} catch (IOException e) {
+			System.out.println("Problem reading file.");
+    		System.err.println("IOException: " + e.getMessage());
+		
+	}
+	}
+
+}
