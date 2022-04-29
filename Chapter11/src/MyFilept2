@@ -1,0 +1,54 @@
+/*
+Program: MyFilept2.java          Last Date of this Revision: April 13, 2022
+Purpose: Creates a file, zzz.txt, if the file does not exist already and asks the user whether they want to keep or delete it
+Author: Eli Baerg
+School: CHHS
+Course: Computer Science 30
+*/
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import java.io.*;
+
+
+public class MyFilept2 {
+
+	public static void main(String[] args)
+	{
+		Scanner input = new Scanner(System.in);
+		File textFile = new File("zzz.txt");//Creates text file called zzz.txt
+		
+		//Checks if file already exists
+		if (textFile.exists()) {
+			System.out.println("File already exists.");
+		}
+		else {
+			try {
+				textFile.createNewFile();
+				System.out.println("New file created.");//Creates the file
+				
+				
+				System.out.println("Enter 1 to keep the file, enter 2 to delete the file.");//Asks user to keep or delete file
+				
+				int num = input.nextInt();
+				
+				
+				
+				if(num == 1) {
+					System.out.println("The file was saved.");//Keeps file
+				}
+				
+				else {
+					textFile.delete();
+					System.out.println("The file was deleted.");//Deletes file
+				}
+			//Catches errors
+			} catch (IOException e) {
+				System.out.println("File could not be created.");
+				System.err.println("IOException: " + e.getMessage());
+			}
+			
+		}
+	}
+}
