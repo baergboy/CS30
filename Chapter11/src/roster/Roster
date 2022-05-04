@@ -1,3 +1,11 @@
+/*
+Program: Stats1.java          Last Date of this Revision: May 4, 2022
+Purpose: User creates file with user specified amount of students, and prints the students names and scores
+Author: Eli Baerg
+School: CHHS
+Course: Computer Science 30
+*/
+
 package roster;
 
 import java.io.*;
