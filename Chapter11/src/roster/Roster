@@ -1,0 +1,76 @@
+package roster;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Roster {
+
+	public static void main(String[] args) 
+	{
+
+		Scanner input = new Scanner(System.in);
+		String fileName;
+		int num;
+		String fn;
+		String ln;
+		
+		System.out.println("Enter the Name of your File: ");//Create file with user inputted name
+		fileName = input.next();
+		fileName = fileName + ".txt";
+		File dataFile = new File(fileName);
+		
+		System.out.println("How many Students in Your Class: ");//User inputs how many students
+		num = input.nextInt();
+		
+		try 
+		{
+			FileOutputStream out = new FileOutputStream(dataFile);//Writes objects
+			ObjectOutputStream writeFile = new ObjectOutputStream(out);
+			for (int i = 0; i < num; i++) //For loop to enter first and last names of students
+			{
+				  System.out.print("Enter Student First Name: ");//Loops through asking student names for number of students
+				  fn = input.next();
+				  System.out.print("Enter Student Last Name: ");
+				  ln = input.next();
+
+				  writeFile.writeObject(new StuName(fn, ln));//Writes students name into file
+			}
+			
+			writeFile.close();
+			System.out.println("Data Has Been Written To File");//After all students have been written to file closes file
+			
+			FileInputStream in = new FileInputStream(dataFile);//Reads and displays objects
+		    ObjectInputStream readStuName = new ObjectInputStream(in);
+		    
+		    for (int i = 0; i < num; i++) 
+			{
+
+		   System.out.println((StuName)readStuName.readObject());
+			
+			}
+
+		    readStuName.close();
+			
+		}
+		
+		
+		catch(FileNotFoundException e) 
+		{
+			System.out.println("File Could Not be Found");
+			System.out.println("File Not Found Exception" + e.getMessage());
+		}
+		
+		catch(IOException e)
+		
+		{
+			System.out.println("Problem Reading File");
+			System.err.println("IO Exception: " + e.getMessage());
+		}
+
+		catch(ClassNotFoundException e) 
+		{
+			System.out.println("Class Not Found Exception" + e.getMessage());
+			
+		}
+	}
+}
