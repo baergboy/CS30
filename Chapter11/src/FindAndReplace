@@ -1,0 +1,66 @@
+/*
+Program: Stats1.java          Last Date of this Revision: May 5, 2022
+Purpose: Asks user for a phrase in a file they want replaced with another phrase they input
+Author: Eli Baerg
+School: CHHS
+Course: Computer Science 30
+*/
+
+import java.io.*;
+import java.util.*;
+
+public class FindAndReplace {
+	
+	public static void main(String[] args) 
+	{
+		
+		//Variables
+		String initialPhrase = "";
+	    FileWriter out;
+	    String fileName;
+	    BufferedReader reader = null;
+	    BufferedWriter writer = null;
+	     
+	    Scanner input = new Scanner(System.in);
+		System.out.println("Please enter the name of your file");//Get file name from user
+		fileName = input.nextLine();
+		fileName = fileName + ".txt";
+		File dataFile = new File(fileName);
+			
+		System.out.println("What Word or Phrase Would You Like to Find");//User inputs what they want replaced in their file
+		String findPhrase = input.nextLine();
+			
+		System.out.println("What Word or Phrase Would You Like to Replace " + findPhrase + " With");//User inputs phrase to replace text specified
+		String replacePhrase = input.nextLine();
+			
+		try 
+		{
+			reader = new BufferedReader(new FileReader(dataFile));//Put line in new string
+			String currentLine = reader.readLine();
+				
+			while(currentLine != null) //Goes through line until the end
+			{
+				initialPhrase += currentLine + System.lineSeparator();//Add file lines to initialPhrase String
+				currentLine = reader.readLine();	
+			}
+				
+			String finalPhrase = initialPhrase.replaceAll(findPhrase, replacePhrase);//Create string that replaces words
+				
+			writer = new BufferedWriter(new FileWriter(dataFile));//Write data to file
+			writer.write(finalPhrase);
+				
+			System.out.println("New Phrase Written To File");
+
+			reader.close();//Close file
+			writer.close();		
+		}
+			
+		catch(IOException e)//Exceptions
+			
+		{
+			System.out.println("Problem Reading File");
+			System.err.println("IO Exception: " + e.getMessage());
+		}
+	}
+
+}
