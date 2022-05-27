@@ -1,0 +1,17 @@
+
+1. Data in memory cannot be called a file because memory is deleted during restarts and files are stored permanently
+
+2. Import java.io*;
+
+3. There is only one slash in the code, there needs to be two slashes to properly call a file
+
+4.
+a) catch (IOException e)
+b) catch (IOException e) {
+    System.out. println(“Could not read file.”);
+    System.out.println(“Name cannot be used for file.”);
+    }
+    
+5.
+a) err
+b) The messages are displayed through the console to the user
