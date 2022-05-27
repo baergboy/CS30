@@ -1,0 +1,43 @@
+package findName;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class FindName {
+
+	public static void main(String[] args) {
+		
+		int num;
+		int place;
+		String search;
+		
+		//User inputs how many names they want in the array
+		Scanner input = new Scanner(System.in);
+		System.out.println("How many names do you want in the array? ");
+		num = input.nextInt();
+		
+		//Creates array with spaces equal to how many names user inputted
+		String[] nameNums = new String[num];
+		
+		//User inputs each name into the array
+		for (int i = 0; i < num; i++) {
+			System.out.println("Please enter a name for the array");
+			nameNums[i] = input.next();
+		}
+		
+		//User inputs the name they want to search for in the array
+		System.out.println("Please enter the name to look for: ");
+		search = input.next();
+	
+		//Uses the linear method from Search and looks at both nameNums and look to try and find matching words
+		place = Search.linear(nameNums, search);
+		
+		//If the place is equal to -1 the name isn't in the array but if its equal to anything else it tells you where in the console it is.
+		if(place == -1){
+			System.out.println("Name not found in array.");
+		}
+		else {
+			System.out.println("First occurance is element " + place);
+		} 
+	}
+}
