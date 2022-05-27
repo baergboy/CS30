@@ -1,0 +1,34 @@
+import java.util.*;
+import java.io.*;
+import java.text.NumberFormat;
+
+public class HighestGrade {
+	
+	public static void main(String[] args) {
+		
+		NumberFormat percent = NumberFormat.getPercentInstance();
+		
+		Scanner input = new Scanner(System.in);
+		
+		double highest = 0;
+		
+		//Creates string array with 5 spots
+		int[] grades = new int[5];
+		
+		//For loop that makes user input 5 grades into array string
+		for(int i = 0; i < 5; i++) {
+			
+			System.out.println("Enter grade: ");
+			grades[i] = input.nextInt();
+		
+		//checks if grade inputted is the highest so far
+		if(grades[i] > highest) {
+			highest = grades[i];
+		}
+		}
+		
+		//Prints the highest grade in a percent format
+		System.out.println("The highest grade is " + percent.format(highest/100));
+	}
+
+}
