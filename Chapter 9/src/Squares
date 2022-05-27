@@ -1,3 +1,12 @@
+/*
+Program: Squares.java          Last Date of this Revision: May 16, 2022
+Purpose: An application that finds the squares of numbers 0-4
+Author: Eli Baerg
+School: CHHS
+Course: Computer Programming 30
+ 
+*/
+
 public class Squares {
 	
 	public static void main(String[] args) {
